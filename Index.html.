@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trend to Money</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header>
+    <h1>🚀 Trend to Money</h1>
+
+    <button onclick="toggleMenu()">☰</button>
+
+    <nav id="nav">
+      <a href="#home">Home</a>
+      <a href="#trends">Trends</a>
+      <a href="#opportunities">Opportunities</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="home" class="hero">
+      <h2>Turn Trends Into Opportunities 💰</h2>
+      <p>Discover rising trends and find business ideas, content ideas and ways to monetize them.</p>
+
+      <div class="search-box">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search a trend..."
+        >
+
+        <button onclick="searchTrend()">Search</button>
+      </div>
+
+      <div id="searchResult"></div>
+    </section>
+
+    <section id="trends">
+      <h2>🔥 Trending Opportunities</h2>
+
+      <div id="trendContainer" class="trend-grid"></div>
+    </section>
+
+    <section id="opportunities">
+      <h2>💡 Business Opportunities</h2>
+
+      <div id="opportunity">
+        <p>Search for a trend to discover an opportunity.</p>
+      </div>
+    </section>
+
+    <section id="about">
+      <h2>About Trend to Money</h2>
+      <p>
+        Trend to Money helps creators and entrepreneurs discover trends
+        and turn them into practical business opportunities.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Trend to Money. All rights reserved.</p>
+  </footer>
+
+  <script src="trends.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
