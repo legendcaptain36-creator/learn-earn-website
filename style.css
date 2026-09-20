@@ -172,4 +172,9 @@ footer {
     margin-top: 10px;
     border-radius: 8px;
   }
+}.search-box button,
+.trend-card button {
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
 }
