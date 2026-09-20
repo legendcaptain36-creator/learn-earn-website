@@ -20,7 +20,8 @@ function searchTrend() {
   const matches = trends.filter(function (trend) {
     return (
       trend.name.toLowerCase().includes(query) ||
-      trend.category.toLowerCase().includes(query)
+      trend.category.toLowerCase().includes(query) ||
+      trend.description.toLowerCase().includes(query)
     );
   });
 
@@ -32,47 +33,3 @@ function searchTrend() {
   result.innerHTML = matches.map(function (trend) {
     return `
       <div class="trend-card">
-        <h3>${trend.name}</h3>
-        <p><strong>Category:</strong> ${trend.category}</p>
-        <p>${trend.description}</p>
-        <button onclick="showOpportunity('${trend.name}', '${trend.description}')">
-          💰 Monetize This
-        </button>
-      </div>
-    `;
-  }).join("");
-}
-
-function showOpportunity(name, description) {
-  const opportunity = document.getElementById("opportunity");
-
-  opportunity.innerHTML = `
-    <h3>${name}</h3>
-    <p>${description}</p>
-    <br>
-    <p><strong>Opportunity:</strong> Create content, services or digital products around this trend.</p>
-  `;
-}
-
-function displayTrends() {
-  const container = document.getElementById("trendContainer");
-
-  if (!container) {
-    return;
-  }
-
-  container.innerHTML = trends.map(function (trend) {
-    return `
-      <div class="trend-card">
-        <h3>${trend.name}</h3>
-        <p>${trend.category}</p>
-        <p>${trend.description}</p>
-        <button onclick="showOpportunity('${trend.name}', '${trend.description}')">
-          💰 Explore
-        </button>
-      </div>
-    `;
-  }).join("");
-}
-
-displayTrends();
