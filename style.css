@@ -178,3 +178,27 @@ footer {
   color: white;
   font-weight: 600;
 }
+
+/* Real-time trends */
+#live-trends { background: #eef4ff; }
+.live-heading { max-width: 1100px; margin: 0 auto 22px; display: flex; align-items: end; justify-content: space-between; gap: 20px; }
+.live-heading h2 { text-align: left; margin: 8px 0 4px; }
+.live-subtitle { margin: 0; color: #5b6472; }
+.live-badge { font-size: 12px; font-weight: 800; letter-spacing: 1px; color: #dc2626; }
+.refresh-button, .live-filter { border: 1px solid #d1d5db; background: white; color: #111827; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-weight: 600; }
+.live-controls { max-width: 1100px; margin: 0 auto 18px; display: flex; flex-wrap: wrap; gap: 8px; }
+.live-filter.active { background: #2563eb; color: white; border-color: #2563eb; }
+.live-status { max-width: 1100px; margin: 0 auto 18px; font-size: 14px; color: #5b6472; }
+#liveTrendContainer { max-width: 1100px; margin: auto; }
+.live-card { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+.live-card-top { display: flex; align-items: center; gap: 7px; font-size: 12px; color: #6b7280; margin-bottom: 10px; }
+.live-dot { width: 7px; height: 7px; border-radius: 50%; background: #dc2626; display: inline-block; }
+.live-card h3 { font-size: 18px; line-height: 1.35; margin-bottom: 10px; }
+.live-card p { color: #5b6472; font-size: 14px; margin-bottom: 12px; }
+.live-card a { color: #2563eb; font-weight: 700; text-decoration: none; }
+.live-empty { grid-column: 1 / -1; background: white; padding: 25px; border-radius: 12px; text-align: center; color: #5b6472; }
+@media (max-width: 700px) {
+  .live-heading { align-items: flex-start; flex-direction: column; }
+  .live-heading h2 { font-size: 26px; }
+  .refresh-button { width: 100%; }
+}
