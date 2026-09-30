@@ -41,9 +41,28 @@
       <div id="searchResult"></div>
     </section>
 
-    <section id="trends">
-      <h2>🔥 Trending Opportunities</h2>
+    <section id="live-trends">
+      <div class="live-heading">
+        <div>
+          <span class="live-badge">● LIVE</span>
+          <h2>🔥 Real-Time Trending Topics</h2>
+          <p class="live-subtitle">Fresh headlines from Google News. Refresh anytime.</p>
+        </div>
+        <button id="refreshLiveTrends" class="refresh-button" type="button">↻ Refresh</button>
+      </div>
+      <div class="live-controls">
+        <button class="live-filter active" data-topic="all" type="button">All</button>
+        <button class="live-filter" data-topic="technology" type="button">AI & Tech</button>
+        <button class="live-filter" data-topic="business" type="button">Business</button>
+        <button class="live-filter" data-topic="finance" type="button">Finance</button>
+        <button class="live-filter" data-topic="india" type="button">India</button>
+      </div>
+      <div id="liveStatus" class="live-status">Loading live trends...</div>
+      <div id="liveTrendContainer" class="trend-grid"></div>
+    </section>
 
+    <section id="trends">
+      <h2>💡 Trend to Money Ideas</h2>
       <div id="trendContainer" class="trend-grid"></div>
     </section>
 
