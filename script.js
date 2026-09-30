@@ -252,3 +252,86 @@ if (searchInput) {
     }
   });
 }
+
+/* ---------------- REAL-TIME TRENDS ---------------- */
+const liveTopicFeeds = {
+  all: "https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN:en",
+  technology: "https://news.google.com/rss/search?q=AI%20OR%20technology&hl=en-IN&gl=IN&ceid=IN:en",
+  business: "https://news.google.com/rss/search?q=business%20OR%20startup&hl=en-IN&gl=IN&ceid=IN:en",
+  finance: "https://news.google.com/rss/search?q=finance%20OR%20markets%20OR%20economy&hl=en-IN&gl=IN&ceid=IN:en",
+  india: "https://news.google.com/rss/search?q=India&hl=en-IN&gl=IN&ceid=IN:en"
+};
+let currentLiveTopic = "all";
+let liveItems = [];
+
+function relativeTime(dateString) {
+  const published = new Date(dateString);
+  if (Number.isNaN(published.getTime())) return "Recently";
+  const minutes = Math.max(0, Math.floor((Date.now() - published.getTime()) / 60000));
+  if (minutes < 60) return minutes <= 1 ? "Just now" : minutes + " min ago";
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) return hours + " hr ago";
+  return Math.floor(hours / 24) + " days ago";
+}
+
+function getSourceName(item) {
+  if (item.author && item.author.trim()) return item.author.trim();
+  try { return new URL(item.link).hostname.replace(/^www\./, ""); }
+  catch (e) { return "News source"; }
+}
+
+function renderLiveTrends() {
+  const container = document.getElementById("liveTrendContainer");
+  if (!container) return;
+  if (!liveItems.length) {
+    container.innerHTML = '<div class="live-empty">No live headlines are available right now. Try Refresh.</div>';
+    return;
+  }
+  container.innerHTML = liveItems.slice(0, 12).map(function(item) {
+    const title = escapeHTML(item.title || "Untitled headline");
+    const description = escapeHTML((item.description || "Open the article to read the full story.").replace(/<[^>]*>/g, "").slice(0, 150));
+    const link = item.link || "#";
+    const source = escapeHTML(getSourceName(item));
+    const time = escapeHTML(relativeTime(item.pubDate));
+    return '<article class="live-card">' +
+      '<div class="live-card-top"><span class="live-dot"></span><span>' + source + '</span><span>•</span><span>' + time + '</span></div>' +
+      '<h3>' + title + '</h3><p>' + description + '</p>' +
+      '<a href="' + escapeHTML(link) + '" target="_blank" rel="noopener noreferrer">Read full story ↗</a>' +
+      '</article>';
+  }).join("");
+}
+
+async function loadLiveTrends(topic) {
+  const status = document.getElementById("liveStatus");
+  const container = document.getElementById("liveTrendContainer");
+  if (!status || !container) return;
+  currentLiveTopic = topic || "all";
+  status.textContent = "Loading fresh headlines...";
+  container.innerHTML = "";
+  try {
+    const rssUrl = encodeURIComponent(liveTopicFeeds[currentLiveTopic]);
+    const response = await fetch("https://api.rss2json.com/v1/api.json?rss_url=" + rssUrl + "&count=12");
+    if (!response.ok) throw new Error("Network response was not OK");
+    const data = await response.json();
+    if (data.status !== "ok" || !Array.isArray(data.items)) throw new Error("Feed unavailable");
+    liveItems = data.items;
+    status.textContent = "Updated " + new Date().toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"});
+    renderLiveTrends();
+  } catch (error) {
+    status.textContent = "Live feed could not be loaded.";
+    container.innerHTML = '<div class="live-empty">The news provider is temporarily unavailable. Your Trend to Money ideas are still below.</div>';
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll(".live-filter").forEach(function(button) {
+    button.addEventListener("click", function() {
+      document.querySelectorAll(".live-filter").forEach(function(item) { item.classList.remove("active"); });
+      button.classList.add("active");
+      loadLiveTrends(button.dataset.topic);
+    });
+  });
+  const refreshButton = document.getElementById("refreshLiveTrends");
+  if (refreshButton) refreshButton.addEventListener("click", function() { loadLiveTrends(currentLiveTopic); });
+  loadLiveTrends("all");
+});
