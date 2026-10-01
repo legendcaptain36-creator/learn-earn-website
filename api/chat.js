@@ -1,48 +1,25 @@
+import { generateText } from "ai";
+
 export default async function handler(req,res){
   if(req.method!=="POST") return res.status(405).json({error:"Method not allowed"});
   const prompt=String(req.body?.prompt||"").trim().slice(0,4000);
   if(!prompt) return res.status(400).json({error:"Prompt required"});
 
-  const key=process.env.AI_GATEWAY_API_KEY;
-  const token=process.env.VERCEL_OIDC_TOKEN;
+  try{
+    const { text } = await generateText({
+      model: process.env.AI_MODEL || "openai/gpt-5.6-luna",
+      temperature: 0.4,
+      system: "You are Trending Money, an educational assistant about saving, investing, money and small business. Be practical and concise. Never promise profits. For investing, explain risk and avoid personalized buy/sell instructions. Tailor business ideas to budget and skills when provided. End with: Educational information only — not financial advice.",
+      prompt
+    });
 
-  // Vercel deployments provide VERCEL_OIDC_TOKEN automatically.
-  // AI_GATEWAY_API_KEY can be used when explicitly configured.
-  if(key || token){
-    try{
-      const headers={"Content-Type":"application/json","Accept":"application/json"};
-      headers.Authorization="Bearer "+(key||token);
-
-      const r=await fetch("https://ai-gateway.vercel.sh/v1/chat/completions",{
-        method:"POST",
-        headers,
-        body:JSON.stringify({
-          model:process.env.AI_MODEL||"openai/gpt-5.6-sol",
-          temperature:.4,
-          messages:[
-            {role:"system",content:"You are Trending Money, an educational assistant about saving, investing, money and small business. Be practical and concise. Never promise profits. For investing, explain risk and avoid personalized buy/sell instructions. Tailor business ideas to budget and skills when provided. End with: Educational information only — not financial advice."},
-            {role:"user",content:prompt}
-          ]
-        })
-      });
-
-      const raw=await r.text();
-      let d={};
-      try{d=JSON.parse(raw)}catch{}
-
-      if(r.ok){
-        const answer=d?.choices?.[0]?.message?.content;
-        if(answer) return res.status(200).json({answer:format(answer),source:"ai"});
-      }
-
-      // Do not break the website when the gateway is temporarily unavailable.
-      return res.status(200).json({answer:fallback(prompt),source:"fallback"});
-    }catch(e){
-      return res.status(200).json({answer:fallback(prompt),source:"fallback"});
-    }
+    return res.status(200).json({answer:format(text),source:"ai"});
+  }catch(e){
+    return res.status(200).json({
+      answer:fallback(prompt),
+      source:"fallback"
+    });
   }
-
-  return res.status(200).json({answer:fallback(prompt),source:"fallback"});
 }
 
 function fallback(q){
