@@ -1,1 +1,74 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Trending Money — Ask. Learn. Build.</title><link rel="stylesheet" href="style.css"></head><body><header class="site-header"><a class="brand" href="#home"><span class="brand-mark">$</span><span>Trending <b>Money</b></span></a><button class="menu-btn" onclick="toggleMenu()">☰</button><nav id="nav"><a href="#home">Ask</a><a href="#topics">Topics</a><a href="#ideas">Ideas</a><button id="themeToggle" class="theme-btn">☾</button></nav></header><main><section id="home" class="hero"><div class="hero-inner"><span class="eyebrow">MONEY • BUSINESS • OPPORTUNITY</span><h1>Turn your <span>questions</span><br>into better money moves.</h1><p>Ask about saving, investing, business or side income. Get a clear answer and videos to explore next.</p><form id="askForm" class="ask-box"><textarea id="promptInput" rows="2" placeholder="e.g. I have ₹10,000. How can I start a small online business?"></textarea><button type="submit"><span>Ask Trending Money</span><span>→</span></button></form><div class="chips"><button type="button" data-prompt="How can I save more money every month?">How can I save more?</button><button type="button" data-prompt="Give me low-investment online business ideas.">Low-investment business ideas</button><button type="button" data-prompt="Explain investing for a complete beginner.">Investing for beginners</button><button type="button" data-prompt="How can I build a side income using AI?">Side income with AI</button></div><p class="disclaimer">Educational information only — not financial advice.</p></div></section><section id="answerSection" class="answer-section hidden"><div class="section-head"><span class="eyebrow">YOUR ANSWER</span><h2>Here’s a practical starting point.</h2></div><div id="answerCard" class="answer-card"></div><div id="videoSection" class="video-section"></div></section><section id="topics" class="topics-section"><div class="section-head"><span class="eyebrow">EXPLORE</span><h2>What are you working on?</h2><p>Start with a topic or ask your own question.</p></div><div class="topic-grid"><button class="topic-card" data-prompt="How can I create a simple monthly budget and save more?"><span>◒</span><strong>Saving</strong><small>Budget better and build habits.</small></button><button class="topic-card" data-prompt="Explain investing basics for a beginner."><span>↗</span><strong>Investing</strong><small>Understand risk and basics.</small></button><button class="topic-card" data-prompt="Give me low-investment online business ideas."><span>✦</span><strong>Business</strong><small>Find ideas worth testing.</small></button><button class="topic-card" data-prompt="Give me realistic online side-income ideas."><span>＋</span><strong>Side Income</strong><small>Explore skills and offers.</small></button></div></section><section id="ideas" class="ideas-section"><div class="section-head"><span class="eyebrow">IDEA BOARD</span><h2>Business ideas to explore</h2><p>Validate demand before spending money.</p></div><div class="idea-grid"><article><span>01</span><h3>AI services</h3><p>Help small businesses with content, research or workflow automation.</p></article><article><span>02</span><h3>Digital products</h3><p>Create templates, guides, checklists or spreadsheets around a real problem.</p></article><article><span>03</span><h3>Content + affiliate</h3><p>Build useful niche content and disclose affiliate relationships clearly.</p></article><article><span>04</span><h3>Freelance skills</h3><p>Package one useful skill into a focused service and build proof of work.</p></article></div></section></main><footer><div><a class="brand" href="#home"><span class="brand-mark">$</span><span>Trending <b>Money</b></span></a><p>Learn. Explore. Build.</p></div><p>© 2026 Trending Money · Not financial advice.</p></footer><script src="script.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Confident Is Enough helps you discover useful answers, trending opportunities, skills, jobs and ways to build your future.">
+<title>Confident Is Enough — Discover. Learn. Build.</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+<a class="brand" href="#home"><span class="brand-mark">C</span><span>Confident <b>Is Enough</b></span></a>
+<button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+<nav id="nav"><a href="#trending">Trending</a><a href="#opportunity">Opportunity</a><a href="#topics">Explore</a><button id="themeToggle" class="theme-btn">☾</button></nav>
+</header>
+<main>
+<section id="home" class="hero">
+<div class="hero-inner">
+<div class="eyebrow">CONFIDENT IS ENOUGH</div>
+<h1>Find what's next.<br><span>Build it confidently.</span></h1>
+<p>Ask a question, discover a growing opportunity, or tell us where you want to go. Get a clear path from <strong>learn → build → earn.</strong></p>
+<form id="askForm" class="ask-box">
+<textarea id="promptInput" rows="2" placeholder="Ask anything: “What AI skill should I learn for better job opportunities?”"></textarea>
+<button type="submit"><span>Get My Answer</span><span>→</span></button>
+</form>
+<div class="chips">
+<button type="button" data-prompt="What AI skills are useful for getting a better job?">AI skills for jobs</button>
+<button type="button" data-prompt="What are realistic online business ideas I can start with a small budget?">Business ideas</button>
+<button type="button" data-prompt="What should I learn in the next 30 days to increase my income?">30-day income plan</button>
+<button type="button" data-prompt="What skills are becoming more valuable because of AI?">Future skills</button>
+</div>
+<p class="disclaimer">Information is educational. Income is never guaranteed.</p>
+</div>
+</section>
+
+<section id="answerSection" class="answer-section hidden">
+<div class="section-head"><div class="eyebrow">YOUR ANSWER</div><h2>Here's your starting point.</h2></div>
+<div id="answerCard" class="answer-card"></div><div id="videoSection" class="video-section"></div>
+</section>
+
+<section id="trending" class="trending-section">
+<div class="section-head"><div class="eyebrow">WHAT'S MOVING</div><h2>Trending opportunities</h2><p>Topics worth understanding before you decide what to learn or build.</p></div>
+<div class="trend-grid">
+<article class="trend-card"><span>01</span><h3>AI automation</h3><p>Learn how businesses use AI to reduce repetitive work and improve workflows.</p><button data-prompt="Explain AI automation and how a beginner can start learning it.">Explore →</button></article>
+<article class="trend-card"><span>02</span><h3>AI careers</h3><p>Understand practical AI skills that can complement existing careers.</p><button data-prompt="What practical AI skills can complement an existing career in 2026?">Explore →</button></article>
+<article class="trend-card"><span>03</span><h3>Digital products</h3><p>Turn useful knowledge, templates or workflows into products people can buy.</p><button data-prompt="What digital products can a beginner create and validate online?">Explore →</button></article>
+<article class="trend-card"><span>04</span><h3>Creator economy</h3><p>Explore content, audiences and ethical ways to build a digital business.</p><button data-prompt="How can a beginner build a useful content business around a skill?">Explore →</button></article>
+</div>
+</section>
+
+<section id="opportunity" class="opportunity-section">
+<div class="section-head"><div class="eyebrow">YOUR NEXT MOVE</div><h2>What are you trying to achieve?</h2><p>Tell us your situation and get a practical direction.</p></div>
+<div class="goal-grid">
+<button data-prompt="I want a better job. Help me identify the skills I should learn based on my current situation."><strong>Get a better job</strong><small>Skills, roles & roadmap →</small></button>
+<button data-prompt="I want to earn extra income. Give me realistic opportunities based on my skills and available time."><strong>Earn extra income</strong><small>Ideas, skills & first steps →</small></button>
+<button data-prompt="I want to start a business with a small budget. Help me find and validate an idea."><strong>Start a business</strong><small>Validate before spending →</small></button>
+<button data-prompt="I want to learn AI from the beginning. Create a practical 30-day plan for me."><strong>Learn AI</strong><small>30-day practical plan →</small></button>
+</div>
+</section>
+
+<section id="topics" class="topics-section">
+<div class="section-head"><div class="eyebrow">EXPLORE</div><h2>Answers for real life</h2></div>
+<div class="topic-grid">
+<button data-prompt="Explain AI in a simple but practical way."><span>AI</span><small>Tools, skills & automation</small></button>
+<button data-prompt="What skills can help someone become more employable?"><span>Careers</span><small>Jobs, skills & interviews</small></button>
+<button data-prompt="Give me practical small-business ideas and explain how to validate them."><span>Business</span><small>Ideas, validation & growth</small></button>
+<button data-prompt="How can I build better personal finances as a beginner?"><span>Money</span><small>Saving, planning & basics</small></button>
+<button data-prompt="How can I learn a valuable skill efficiently?"><span>Learning</span><small>Plans, practice & projects</small></button>
+<button data-prompt="What are useful digital tools for productivity and work?"><span>Tools</span><small>Useful apps & workflows</small></button>
+</div>
+</section>
+</main>
+<footer><div><a class="brand" href="#home"><span class="brand-mark">C</span><span>Confident <b>Is Enough</b></span></a><p>Discover. Learn. Build.</p></div><p>© 2026 Confident Is Enough · Information is educational.</p></footer>
+<script src="script.js"></script>
+</body></html>
